@@ -1,0 +1,56 @@
+POST http://localhost:5000/logIn 
+Content-Type: application/json
+
+{
+    "username":"Draganche",
+    "password":"dragan"
+}
+
+###
+
+POST  http://localhost:5000/logOut 
+2
+###
+
+POST  http://localhost:5000/orderBook 
+
+###
+
+POST http://localhost:5000/addBook 
+Content-Type: application/json
+
+{
+    "user_id":"1",
+    "title":"knjiga",
+    "price":"300",
+    "year":"2010-10-10",
+    "description":"Bas dobra knjiga",
+    "url":"no picture available",
+    "quantity":"2"
+}
+
+###
+
+POST http://localhost:5000/register 
+Content-Type: application/json
+
+{
+    "username":"Draganche",
+    "password":"dragan",
+    "email":"dragan@draganovic.com"
+}
+
+###
+
+POST http://localhost:5000/orderBook 
+Content-Type: application/json
+
+{
+    "book_id":"8",
+    "quantity":"1",
+    "adress":"Djure gajica 5",
+    "name":"Miljan",
+    "surrname":"Radulovic",
+    "ordered_from":"1",
+    "phone_number":"064122212"
+}
