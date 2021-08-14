@@ -7,7 +7,11 @@ const initialize = (passport, getUserByUsername, getUserById) => {
       const user = await getUserByUsername(username);
       if (user === null) {
         return done(null, false, { message: "No user with that username" });
-      } else {
+      }
+      else if(user.verified_account == 0){
+        return done(null, false, { message: "Please verify your account to sign in!" });
+      } 
+      else {
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if(err) throw err + "in bcrypt compare!";
           if (isMatch) {

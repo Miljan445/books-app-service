@@ -13,7 +13,7 @@ const checkAuth = (req, res, next) => {
 
   const getUserByUsername = (username) => {
     return new Promise((resolve,reject)=>{
-      dbCon.query("SELECT username,password,user_id AS id FROM users WHERE username = ?",[username],(err,res)=>{
+      dbCon.query("SELECT username,password,verified_account,user_id AS id FROM users WHERE username = ?",[username],(err,res)=>{
         if(err) reject(err);
         if(res[0] === undefined){
           resolve(null)
