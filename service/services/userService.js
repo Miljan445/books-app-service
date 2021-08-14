@@ -63,6 +63,16 @@ class UserOperations {
       });
     });
   }
+
+  static verifyUserAcc (token) {
+    // method to verify users account by token provided while registering
+    return new Promise((resolve,reject)=>{
+      dbCon.query("CALL verify_user_acc(?)",[token],(err,res)=>{
+        if(err) reject(err);
+        resolve(res[0]);
+      })
+    })
+  }
 }
 
 module.exports = {

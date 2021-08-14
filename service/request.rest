@@ -12,7 +12,8 @@ POST  http://localhost:5000/logOut
 2
 ###
 
-POST  http://localhost:5000/orderBook 
+POST  http://loca        console.log('RES FROM USERS BOOKS ' , res);
+lhost:5000/orderBook 
 
 ###
 
@@ -35,9 +36,9 @@ POST http://localhost:5000/register
 Content-Type: application/json
 
 {
-    "username":"Draganche",
+    "username":"Draganche2",
     "password":"dragan",
-    "email":"dragan@draganovic.com"
+    "email":"dragan@draganovic2.com"
 }
 
 ###
@@ -54,3 +55,23 @@ Content-Type: application/json
     "ordered_from":"1",
     "phone_number":"064122212"
 }
+
+###
+
+POST http://localhost:5000/getUsersBooks 
+Content-Type: application/json
+
+{
+    "user_id":"1"
+}
+
+###
+
+POST http://localhost:5000/verifyAcc 
+Content-Type: application/json
+
+{
+    "token":"29b027f8045cc1d2be57f98a16916f6f"
+}
+
+

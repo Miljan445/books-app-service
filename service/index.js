@@ -40,7 +40,7 @@ app.get("/getBooks", (request, response) => {
 
 app.post("/logIn",(request,response, next)=>{
   UserOperations.logIn(request, response, next).then((data) => {
-    return response.json(data);
+    response.send(data);
   }).catch(err=>{
     throw 'Log in failed , ' + err;
   })
@@ -48,7 +48,7 @@ app.post("/logIn",(request,response, next)=>{
 
 app.post("/logOut",(request,response)=>{
   UserOperations.logOut(request).then(data=>{
-    response.json(data);
+    response.send(data);
   })
 })
 
@@ -75,8 +75,24 @@ app.post("/addBook",checkAuth,(request,response)=>{
   }).catch(err=>{
     throw 'Book ordering failed due to ' + err;
   })
+});
+
+app.post("/getUsersBooks",checkAuth,(request,response)=>{
+  BookHandler.getUsersBooks(request.body.user_id).then(data=>{
+    response.send(data);
+  }).catch(err=>{
+    throw 'Failed to fetch users books due to ' + err;
+  })
 })
 
+
+app.post("/verifyAcc",(request,response) => {
+  UserOperations.verifyUserAcc(request.body.token).then(data=>{
+    response.send(data[0]);
+  }).catch(err=>{
+    throw 'Verifying user acount failed due to ' + err;
+  })
+})
 app.listen(procces_env.port, () => {
   console.log(`Server listening on http://localhost:${procces_env.port}`);
 });

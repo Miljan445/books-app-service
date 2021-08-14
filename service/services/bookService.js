@@ -16,12 +16,24 @@ class BookHandler {
 
   static addBooks(request) {
     // method to add books
-    return new Promise((resolve,reject)=>{
-      dbCon.query("CALL add_book_to_stock(?,?,?,?,?,?,?)",[request.body.user_id,request.body.title,request.body.price,request.body.year,request.body.description,request.body.url,request.body.quantity],(err,res)=>{
-        if(err) reject(err);
-        resolve(res)
-      })
-    })
+    return new Promise((resolve, reject) => {
+      dbCon.query(
+        "CALL add_book_to_stock(?,?,?,?,?,?,?)",
+        [
+          request.body.user_id,
+          request.body.title,
+          request.body.price,
+          request.body.year,
+          request.body.description,
+          request.body.url,
+          request.body.quantity,
+        ],
+        (err, res) => {
+          if (err) reject(err);
+          resolve(res);
+        }
+      );
+    });
     // procedure wrote
   }
 
@@ -29,9 +41,14 @@ class BookHandler {
     // method to remove books
   }
 
-  static getUsersBooks() {
+  static getUsersBooks(user_id) {
     // method to retrive books from specific user
-    // procedure wrote
+    return new Promise((resolve, reject) => {
+      dbCon.query("CALL get_users_books(?)", [user_id], (err, res) => {
+        if (err) reject(err);
+        resolve(res[0]);
+      });
+    });
   }
 
   static orderBook(
